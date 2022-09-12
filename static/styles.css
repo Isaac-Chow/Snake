@@ -1,0 +1,44 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: #0C1821;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    border: 1px solid white;
+    background-color: #324A5F;
+}
+
+#p1 {
+    color: #CCC9DC;
+    position: absolute;
+    /* left: 100px; */
+    top: 10px;
+    font-family: cursive;
+    font-size: x-large;
+}
+
+#p2 {
+    color: #CCC9DC;
+    position: absolute;
+    /* left: 100px; */
+    top: 30px;
+    font-family: cursive;
+    font-size: x-large;
+    margin-top: 35px;
+}
+
+#score {
+    color: yellow;
+}
+
+#high {
+    color: #E43F5A;
+}
