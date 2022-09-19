@@ -12,7 +12,7 @@ window.onload=function(){
         y:160,
         dx:grid,
         dy:0,
-
+        cells:[],
         maxCells:4
     };
     var food={
@@ -60,7 +60,7 @@ window.onload=function(){
         context.fillStyle="#E43F5A";
         snake.cells.forEach(function(cell,index){
             
-            context.refillRect(cell.x,cell.y,grid-1,grid-1)
+            context.fillRect(cell.x,cell.y,grid-1,grid-1)
             if(cell.x===food.x&&cell.y===food.y){
                 snake.maxCells++;
                 score+=1;
@@ -88,4 +88,33 @@ window.onload=function(){
         }
         )
     }
+    // listen to keyboard events to move the snake
+    document.addEventListener("keydown",function(e){
+        // prevent snake from backtracking on itself by checking that it's 
+        // not already moving on the same axis (pressing left while moving
+        // left won't do anything, and pressing right while moving left
+        // shouldn't let you collide with your own body)
+        
+        //left arrow key
+        if (e.which === 37 && snake.dx === 0){
+            snake.dx=-grid;
+            snake.dy=0;
+        }
+        //up arrow key
+        else if (e.which === 38 && snake.dy === 0){
+            snake.dy=-grid;
+            snake.dx=0;
+        }
+        //right arrow key
+        else if (e.which === 39 && snake.dx === 0){
+            snake.dx=grid;
+            snake.dy=0;
+        }
+        //down arrow key
+        else if (e.which === 40 && snake.dx === 0){
+            snake.dy=grid;
+            snake.dx=0;
+        }
+    });
+    requestAnimationFrame(loop);
 }
